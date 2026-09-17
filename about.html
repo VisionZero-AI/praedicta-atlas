@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Company — Praedicta Inc.</title>
+
+  <style>
+    :root {
+      --bg:#0b0f17;
+      --card:#111827;
+      --muted:#94a3b8;
+      --text:#e5e7eb;
+      --line:#1f2937;
+    }
+
+    body {
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+      background:linear-gradient(180deg,#070a10,#0b0f17);
+      color:var(--text);
+    }
+
+    a {
+      color:inherit;
+      text-decoration:none;
+    }
+
+    .wrap {
+      max-width:1000px;
+      margin:0 auto;
+      padding:22px 18px 60px;
+    }
+
+    .badge {
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      padding:8px 10px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background:rgba(17,24,39,.55);
+      color:var(--muted);
+      font-size:12px;
+    }
+
+    .row {
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+
+    .btn {
+      border:1px solid var(--line);
+      background:#0b1220;
+      padding:10px 12px;
+      border-radius:12px;
+      font-size:14px;
+      cursor:pointer;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+    }
+
+    .btn:hover {
+      border-color:#475569;
+    }
+
+    .primary {
+      border-color:#475569;
+      background:rgba(15,23,42,.9);
+    }
+
+    h1 {
+      margin:14px 0 8px;
+      font-size:34px;
+      line-height:1.12;
+      max-width:850px;
+    }
+
+    h2 {
+      margin:0 0 8px;
+      font-size:19px;
+    }
+
+    h3 {
+      margin:0 0 6px;
+      font-size:14px;
+    }
+
+    .sub {
+      color:var(--muted);
+      line-height:1.6;
+      max-width:850px;
+      font-size:14px;
+    }
+
+    .card {
+      margin-top:16px;
+      border:1px solid var(--line);
+      border-radius:16px;
+      background:rgba(17,24,39,.5);
+      padding:18px;
+    }
+
+    .grid2 {
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:10px;
+      margin-top:12px;
+    }
+
+    .grid3 {
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:10px;
+      margin-top:12px;
+    }
+
+    .mini {
+      border:1px solid var(--line);
+      border-radius:12px;
+      background:rgba(2,6,23,.4);
+      padding:14px;
+    }
+
+    .mini strong {
+      display:block;
+      margin-bottom:6px;
+      font-size:14px;
+    }
+
+    .mini p {
+      margin:0;
+      color:var(--muted);
+      font-size:12px;
+      line-height:1.5;
+    }
+
+    .statement {
+      margin-top:16px;
+      border:1px solid #334155;
+      border-radius:16px;
+      background:rgba(2,6,23,.55);
+      padding:20px;
+    }
+
+    .statement p {
+      margin:8px 0 0;
+      color:var(--muted);
+      line-height:1.6;
+    }
+
+    .facts {
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:10px;
+      margin-top:12px;
+    }
+
+    .fact {
+      border:1px solid var(--line);
+      border-radius:12px;
+      background:rgba(2,6,23,.4);
+      padding:13px;
+    }
+
+    .fact span {
+      display:block;
+      color:var(--muted);
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:.06em;
+      margin-bottom:5px;
+    }
+
+    .fact strong {
+      font-size:13px;
+      line-height:1.4;
+    }
+
+    footer {
+      margin-top:22px;
+      padding-top:14px;
+      border-top:1px solid var(--line);
+      color:var(--muted);
+      font-size:12px;
+      line-height:1.5;
+    }
+
+    @media(max-width:800px) {
+      .grid2,
+      .grid3,
+      .facts {
+        grid-template-columns:1fr;
+      }
+
+      h1 {
+        font-size:27px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+<div class="wrap">
+
+  <div class="row" style="justify-content:space-between;">
+    <div class="badge">Praedicta Inc. • Company</div>
+
+    <div class="row">
+      <a class="btn" href="./index.html">Explore the Atlas</a>
+      <a class="btn" href="./sponsor.html">Pilot & Deployment</a>
+      <a class="btn" href="./governance.html">Governance</a>
+    </div>
+  </div>
+
+  <h1>Predictive intelligence for infrastructure decisions before consequences become obvious.</h1>
+
+  <div class="sub">
+    Praedicta Inc. is a U.S. GeoAI company developing predictive mapping
+    and decision-intelligence systems for infrastructure, mobility,
+    resilience, public safety, and complex spatial systems.
+    <br/><br/>
+    The company transforms geospatial and institutional data into evidence
+    about structural pressure, emerging risk, network dependencies,
+    and potential consequences — helping decision-makers understand
+    conditions before critical choices are locked in.
+  </div>
+
+  <div class="row" style="margin-top:16px;">
+    <a class="btn primary" href="./index.html">Explore Praedicta Technology</a>
+    <a class="btn" href="./sponsor.html">Discuss a Pilot</a>
+  </div>
+
+
+  <section class="card">
+    <div class="badge">Company</div>
+    <h2 style="margin-top:10px;">Built around predictive mapping, not static visualization</h2>
+
+    <div class="grid3">
+
+      <div class="mini">
+        <strong>Predictive GeoAI</strong>
+        <p>
+          Geospatial machine learning, network analysis, structural-risk
+          modeling, spatial scoring, and consequence analysis.
+        </p>
+      </div>
+
+      <div class="mini">
+        <strong>Decision Intelligence</strong>
+        <p>
+          Maps, rankings, scenarios, evidence layers, and analytical outputs
+          designed to support institutional and infrastructure decisions.
+        </p>
+      </div>
+
+      <div class="mini">
+        <strong>Reusable Technology</strong>
+        <p>
+          Praedicta is developing reusable methods and analytical engines
+          that can be applied across cities, infrastructure systems,
+          hazards, and operating environments.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <section class="card">
+    <div class="badge">Operating Model</div>
+    <h2 style="margin-top:10px;">From public evidence to operational deployment</h2>
+
+    <div class="grid2">
+
+      <div class="mini">
+        <strong>Public Demonstrations</strong>
+        <p>
+          The Praedicta Atlas demonstrates technical capabilities across
+          mobility, road safety, flood exposure, evacuation, infrastructure
+          consequence, seismic readiness, and structural risk.
+        </p>
+      </div>
+
+      <div class="mini">
+        <strong>Pilot Engagements</strong>
+        <p>
+          Focused projects test a defined decision question using appropriate
+          public, institutional, licensed, or client-provided data.
+        </p>
+      </div>
+
+      <div class="mini">
+        <strong>Operational Deployment</strong>
+        <p>
+          Successful pilots can expand into recurring analysis, broader
+          geography, institutional workflows, and continuously updated models.
+        </p>
+      </div>
+
+      <div class="mini">
+        <strong>Data / Model / API Licensing</strong>
+        <p>
+          Praedicta's longer-term commercial architecture includes structured
+          access to derived intelligence, analytical models, and interfaces.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <section class="card">
+    <div class="badge">Company Facts</div>
+    <h2 style="margin-top:10px;">Praedicta Inc.</h2>
+
+    <div class="facts">
+
+      <div class="fact">
+        <span>Structure</span>
+        <strong>U.S. Delaware C-Corporation</strong>
+      </div>
+
+      <div class="fact">
+        <span>Founded</span>
+        <strong>2026</strong>
+      </div>
+
+      <div class="fact">
+        <span>Origin</span>
+        <strong>Pittsburgh, Pennsylvania</strong>
+      </div>
+
+      <div class="fact">
+        <span>Focus</span>
+        <strong>GeoAI • Predictive Mapping • Decision Intelligence</strong>
+      </div>
+
+    </div>
+  </section>
+
+
+  <section class="card">
+    <div class="badge">Founder</div>
+    <h2 style="margin-top:10px;">Anuar Aubakirov — Founder</h2>
+
+    <div class="sub">
+      Praedicta was founded by Anuar Aubakirov, a civic technologist and
+      GeoAI developer focused on predictive mapping, infrastructure intelligence,
+      and decision-support systems.
+      <br/><br/>
+      His work has included road-safety analytics, predictive mobility systems,
+      infrastructure-risk mapping, flood and evacuation modeling, and
+      geospatial decision tools across U.S. and international locations.
+    </div>
+  </section>
+
+
+  <section class="statement">
+    <div class="badge">Mission</div>
+
+    <h2 style="margin-top:10px;">Clarity under uncertainty.</h2>
+
+    <p>
+      Praedicta exists to help institutions see structural pressure,
+      emerging risk, and potential consequences more clearly before important
+      decisions are locked in.
+    </p>
+
+    <p>
+      The company aims to build predictive intelligence that is technically
+      rigorous, transparent about uncertainty, portable across jurisdictions,
+      and useful to the people responsible for infrastructure and operational decisions.
+    </p>
+  </section>
+
+
+  <section class="card">
+    <div class="badge">Work With Praedicta</div>
+    <h2 style="margin-top:10px;">Start with a defined decision question.</h2>
+
+    <div class="sub">
+      Praedicta works with infrastructure organizations, public institutions,
+      engineering and planning partners, technology companies, and other
+      organizations that need forward-looking geospatial intelligence.
+    </div>
+
+    <div class="row" style="margin-top:14px;">
+      <a class="btn primary"
+         href="mailto:office@praedicta.ai?subject=Praedicta%20Company%20Inquiry">
+        Contact Praedicta ↗
+      </a>
+
+      <a class="btn" href="./sponsor.html">
+        Pilot & Deployment
+      </a>
+
+      <a class="btn" href="./governance.html">
+        Governance & Responsible Intelligence
+      </a>
+    </div>
+  </section>
+
+
+  <footer>
+    <b>Praedicta Inc.</b> — U.S. Delaware C-Corporation • Founded in Pittsburgh<br/>
+    GeoAI • Predictive Mapping • Decision Intelligence • Infrastructure Resilience
+    <br/><br/>
+    office@praedicta.ai
+  </footer>
+
+</div>
+</body>
+</html>

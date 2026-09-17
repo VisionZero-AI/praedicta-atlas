@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Praedicta AI Atlas</title>
+  <title>Praedicta Inc. — Predictive Mapping & Decision Intelligence</title>
   <style>
     :root { --bg:#0b0f17; --card:#111827; --muted:#94a3b8; --text:#e5e7eb; --line:#1f2937; --chip:#0f172a; }
     body { margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; background: linear-gradient(180deg,#070a10, #0b0f17); color:var(--text); }
@@ -45,17 +45,108 @@
     footer { margin-top: 18px; color: var(--muted); font-size: 12px; line-height:1.5; border-top: 1px solid var(--line); padding-top: 12px; }
     .kpi { display:flex; gap:10px; flex-wrap:wrap; margin-top:10px; }
     .kpi .badge { background: rgba(2,6,23,0.45); }
+    .corp-panel {
+      margin: 18px 0;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(17,24,39,0.45);
+    }
+    .corp-label {
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-bottom: 7px;
+    }
+    .corp-title {
+      font-size: 20px;
+      margin: 0 0 7px;
+      line-height: 1.25;
+    }
+    .corp-copy {
+      color: var(--muted);
+      line-height: 1.5;
+      max-width: 900px;
+      font-size: 13px;
+    }
+    .decision-flow {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 9px;
+      margin-top: 15px;
+    }
+    .flow-step {
+      position: relative;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: rgba(2,6,23,0.45);
+      min-height: 58px;
+    }
+    .flow-step strong {
+      display: block;
+      font-size: 13px;
+      margin-bottom: 4px;
+    }
+    .flow-step span {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.35;
+    }
+    .corp-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .corp-card {
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(2,6,23,0.35);
+    }
+    .corp-card h3 {
+      margin: 0 0 6px;
+      font-size: 14px;
+    }
+    .corp-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+    .atlas-intro {
+      margin: 20px 0 10px;
+    }
+    .atlas-intro h2 {
+      font-size: 20px;
+      margin: 7px 0 5px;
+    }
+    .atlas-intro p {
+      color: var(--muted);
+      margin: 0;
+      font-size: 12px;
+      line-height: 1.45;
+    }
+    @media (max-width: 780px) {
+      .decision-flow { grid-template-columns: repeat(2, 1fr); }
+      .corp-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .decision-flow { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
   <div class="wrap">
     <header>
       <div>
-        <div class="badge">Praedicta AI Atlas • Public Demonstrations</div>
-        <h1>Praedicta AI — Risk Intelligence Atlas</h1>
+        <div class="badge">Praedicta Inc. • GeoAI • Predictive Mapping</div>
+        <h1>Predictive Mapping & Decision Intelligence for Infrastructure Resilience</h1>
         <div class="sub">
-          A public catalog of independent, planning-oriented maps across road safety, flood exposure, evacuation readiness, seismic mobility, and infrastructure resilience.
-          <br/>These demos are <b>informational</b> and intended for analysis / situational awareness — not navigation, enforcement, insurance, or official policy.
+          Praedicta Inc. is a GeoAI company that transforms public and institutional geospatial data into forward-looking intelligence for infrastructure, mobility, resilience, and public safety.
+          <br/>Built in the United States. Designed for deployment across cities, infrastructure systems, and international markets.
         </div>
         <div class="kpi">
           <div class="badge" id="kpiTotal">Projects: —</div>
@@ -66,11 +157,77 @@
 
       <!-- UPDATED: buttons + maintained badge -->
       <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
-        <a class="btn" href="sponsor.html">Sponsor a City Build</a>
+        <a class="btn" href="sponsor.html">Request a Pilot</a>
         <a class="btn" href="#contact">Contact</a>
-        <div class="badge">Maintained by Anuar Aubakirov</div>
+        <div class="badge">U.S. Delaware C-Corporation • Founded in Pittsburgh</div>
       </div>
     </header>
+
+
+    <section class="corp-panel">
+      <div class="corp-label">From Data to Decision</div>
+      <h2 class="corp-title">Forward-looking intelligence for complex infrastructure decisions</h2>
+      <div class="corp-copy">
+        Praedicta develops predictive GeoAI systems that identify structural pressure,
+        model consequences, and help institutions understand emerging conditions before
+        critical infrastructure and planning decisions are locked in.
+      </div>
+
+      <div class="decision-flow">
+        <div class="flow-step">
+          <strong>1. Public & Institutional Data</strong>
+          <span>Geospatial, infrastructure, mobility, environmental, and operational datasets.</span>
+        </div>
+        <div class="flow-step">
+          <strong>2. Predictive GeoAI</strong>
+          <span>Spatial modeling, network analysis, machine learning, and consequence analysis.</span>
+        </div>
+        <div class="flow-step">
+          <strong>3. Risk & Consequence Intelligence</strong>
+          <span>Maps, rankings, scenarios, exposure patterns, and decision-ready evidence.</span>
+        </div>
+        <div class="flow-step">
+          <strong>4. Decision Support</strong>
+          <span>Infrastructure, government, engineering, resilience, and enterprise applications.</span>
+        </div>
+      </div>
+
+      <div class="corp-grid">
+        <div class="corp-card">
+          <h3>Technology</h3>
+          <p>
+            Predictive mapping, geospatial machine learning, network analysis,
+            structural-risk modeling, and Praedicta Parallel Consequence Analysis.
+          </p>
+        </div>
+
+        <div class="corp-card">
+          <h3>Applications</h3>
+          <p>
+            Infrastructure resilience, mobility, road safety, climate hazards,
+            physical AI, urban systems, and site consequence intelligence.
+          </p>
+        </div>
+
+        <div class="corp-card">
+          <h3>Commercial Path</h3>
+          <p>
+            Public demonstration → pilot → operational deployment →
+            recurring data, model, or API licensing.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="atlas-intro">
+      <div class="badge">Proof of Capability • Public Demonstrations</div>
+      <h2>Explore the Praedicta Atlas</h2>
+      <p>
+        Working demonstrations across multiple risk domains, cities, and regions.
+        These public demos are informational and intended for analytical and planning use —
+        not navigation, enforcement, insurance, or official policy.
+      </p>
+    </section>
 
     <div class="bar">
       <div class="control">
@@ -105,12 +262,12 @@
       <div style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; align-items:flex-start;">
         <div style="max-width:720px;">
           <div class="badge">Contact</div>
-          <h2 style="margin:10px 0 6px; font-size:18px;">Connect with the builder</h2>
+          <h2 style="margin:10px 0 6px; font-size:18px;">Work with Praedicta</h2>
           <div style="color:var(--muted); line-height:1.5;">
-            Want your city added, a Pro Brief (PDF + exports), or a partnership? Email me — I respond fastest by email.
+            Explore a pilot, institutional collaboration, data/API integration, or strategic partnership with Praedicta Inc.
           </div>
           <div class="chips" style="margin-top:10px;">
-            <div class="chip">Sponsor a City Build</div>
+            <div class="chip">Request a Pilot</div>
             <div class="chip">Pro Brief (PDF + exports)</div>
             <div class="chip">Partner / reseller</div>
             <div class="chip">Data/API licensing</div>
@@ -122,12 +279,12 @@
 
         <div style="min-width:280px; display:flex; flex-direction:column; gap:10px;">
           <a class="open" href="mailto:office@praedicta.ai?subject=Praedicta%20Atlas%20Inquiry" style="justify-content:center;">
-            Email me ↗
+            Contact Praedicta ↗
           </a>
 
           <button class="btn" id="copyEmail" type="button">Copy email</button>
 
-          <a class="btn" href="sponsor.html" style="text-align:center;">Sponsor a City Build</a>
+          <a class="btn" href="sponsor.html" style="text-align:center;">Request a Pilot</a>
 
           <div class="small">
             Email: <span style="font-weight:600;">office@praedicta.ai</span><br/>

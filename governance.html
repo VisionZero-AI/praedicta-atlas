@@ -1,193 +1,386 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8"/>
-  <title>Praedicta AI – Governance Charter</title>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Governance & Responsible Intelligence — Praedicta Inc.</title>
+
   <style>
+    :root {
+      --bg:#0b0f17;
+      --card:#111827;
+      --muted:#94a3b8;
+      --text:#e5e7eb;
+      --line:#1f2937;
+    }
+
     body {
       margin:0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-      background:#f9fafb;
-      color:#222;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+      background:linear-gradient(180deg,#070a10,#0b0f17);
+      color:var(--text);
     }
+
+    a { color:inherit; text-decoration:none; }
+
     .wrap {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 48px 22px;
+      max-width:1000px;
+      margin:0 auto;
+      padding:22px 18px 60px;
     }
+
+    .badge {
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      padding:8px 10px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background:rgba(17,24,39,.55);
+      color:var(--muted);
+      font-size:12px;
+    }
+
     h1 {
-      font-size: 30px;
-      margin-bottom: 6px;
+      margin:12px 0 8px;
+      font-size:30px;
+      line-height:1.15;
     }
+
     h2 {
-      margin-top: 40px;
-      font-size: 20px;
+      margin:0 0 8px;
+      font-size:18px;
     }
-    p {
-      line-height: 1.65;
-      color:#444;
+
+    .sub {
+      color:var(--muted);
+      line-height:1.55;
+      max-width:850px;
     }
+
+    .row {
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+
+    .btn {
+      border:1px solid var(--line);
+      background:#0b1220;
+      padding:10px 12px;
+      border-radius:12px;
+      font-size:14px;
+      cursor:pointer;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+    }
+
+    .btn:hover { border-color:#475569; }
+
     .card {
-      background:#fff;
-      padding:26px;
+      margin-top:16px;
+      border:1px solid var(--line);
       border-radius:16px;
-      box-shadow:0 8px 24px rgba(0,0,0,0.04);
-      margin-bottom:30px;
+      background:rgba(17,24,39,.5);
+      padding:18px;
     }
-    .muted {
-      color:#666;
+
+    .grid2 {
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:10px;
+      margin-top:12px;
+    }
+
+    .principle {
+      border:1px solid var(--line);
+      border-radius:12px;
+      background:rgba(2,6,23,.4);
+      padding:14px;
+    }
+
+    .principle strong {
+      display:block;
+      margin-bottom:6px;
       font-size:14px;
     }
-    ul {
-      padding-left:20px;
-      line-height:1.6;
+
+    .principle p {
+      margin:0;
+      color:var(--muted);
+      font-size:12px;
+      line-height:1.5;
     }
-    .footer {
-      margin-top:60px;
-      font-size:13px;
-      color:#777;
-      border-top:1px solid #e5e7eb;
-      padding-top:20px;
+
+    .commitment {
+      padding:20px;
+      border:1px solid #334155;
+      border-radius:16px;
+      background:rgba(2,6,23,.55);
+      margin-top:16px;
+    }
+
+    .commitment p {
+      color:var(--muted);
+      line-height:1.55;
+      margin:8px 0 0;
+    }
+
+    ul {
+      margin:8px 0 0;
+      padding-left:20px;
+      color:rgba(226,232,240,.92);
+    }
+
+    li {
+      margin:7px 0;
+      line-height:1.45;
+    }
+
+    footer {
+      margin-top:22px;
+      padding-top:14px;
+      border-top:1px solid var(--line);
+      color:var(--muted);
+      font-size:12px;
+      line-height:1.5;
+    }
+
+    @media(max-width:760px) {
+      .grid2 { grid-template-columns:1fr; }
+      h1 { font-size:25px; }
     }
   </style>
 </head>
-<body>
 
+<body>
 <div class="wrap">
 
-  <h1>Praedicta AI Governance Charter</h1>
-  <p class="muted">
-    Institutional Integrity • Sovereign Respect • Planning-First Intelligence
-  </p>
-
-  <div class="card">
-    <p>
-      Praedicta AI operates as a governance-aligned civic intelligence platform.
-      We design structural risk models that respect sovereign data policies,
-      institutional authority, and public-sector accountability.
-    </p>
+  <div class="row" style="justify-content:space-between;">
+    <div class="badge">Praedicta Inc. • Governance & Responsible Intelligence</div>
+    <a class="btn" href="./index.html">← Explore the Atlas</a>
   </div>
 
-  <h2>1. Respect for Sovereign Data Architecture</h2>
-  <div class="card">
-    <p>
-      We operate strictly within the legal and institutional data frameworks of
-      each jurisdiction. Where crash-level or incident-level datasets are not
-      publicly released, we do not attempt to bypass or challenge such policy.
-    </p>
-    <p>
-      Our models are built exclusively on legally available structural,
-      geospatial, infrastructure, and planning datasets.
-    </p>
+  <h1>Predictive intelligence should clarify decisions — not obscure uncertainty.</h1>
+
+  <div class="sub">
+    Praedicta develops GeoAI, predictive mapping, and consequence-intelligence
+    systems for infrastructure, mobility, resilience, and public-safety applications.
+    This charter establishes the operating principles used to guide public
+    demonstrations, pilot engagements, analytical products, and future deployments.
   </div>
 
-  <h2>2. No Use of Sensitive Microdata</h2>
-  <div class="card">
-    <p>Praedicta AI does not ingest or collect:</p>
+  <section class="card">
+    <div class="badge">Core Principles</div>
+    <h2 style="margin-top:10px;">Responsible intelligence by design</h2>
+
+    <div class="grid2">
+
+      <div class="principle">
+        <strong>1. Lawful & Purpose-Limited Data</strong>
+        <p>
+          Praedicta uses data appropriate to the defined analytical purpose and
+          applicable jurisdiction. Sources may include public, authoritative,
+          institutional, licensed, or client-provided datasets where use is lawful
+          and appropriately authorized.
+        </p>
+      </div>
+
+      <div class="principle">
+        <strong>2. Data Minimization & Privacy</strong>
+        <p>
+          Models should use the minimum data reasonably necessary for the decision
+          question. Praedicta favors structural, geographic, infrastructure,
+          network, environmental, and aggregate signals over unnecessary
+          individual-level information.
+        </p>
+      </div>
+
+      <div class="principle">
+        <strong>3. Structural Intelligence Before Individual Profiling</strong>
+        <p>
+          Praedicta's core architecture is designed around places, systems,
+          infrastructure, networks, and consequences rather than behavioral
+          profiling of identifiable individuals.
+        </p>
+      </div>
+
+      <div class="principle">
+        <strong>4. Transparent Data Provenance</strong>
+        <p>
+          Material analytical outputs should identify important data sources,
+          transformations, assumptions, methodology, geographic scope, and known
+          limitations sufficiently for an informed user to understand the evidence.
+        </p>
+      </div>
+
+      <div class="principle">
+        <strong>5. Uncertainty Must Remain Visible</strong>
+        <p>
+          Predictive outputs are estimates, scenarios, classifications, or
+          analytical indicators — not guarantees of future events. Confidence,
+          limitations, data gaps, and model uncertainty should be communicated
+          where they materially affect interpretation.
+        </p>
+      </div>
+
+      <div class="principle">
+        <strong>6. Human Decision Authority</strong>
+        <p>
+          Praedicta systems support professional and institutional judgment.
+          Analytical outputs do not replace engineering review, emergency command,
+          regulatory authority, statutory processes, or other accountable
+          human decision-making.
+        </p>
+      </div>
+
+      <div class="principle">
+        <strong>7. No Surveillance-by-Default</strong>
+        <p>
+          Praedicta's standard products are not designed as surveillance systems.
+          Public demonstrations do not rely on continuous tracking of identifiable
+          individuals or covert behavioral monitoring.
+        </p>
+      </div>
+
+      <div class="principle">
+        <strong>8. Institutional & Political Neutrality</strong>
+        <p>
+          Analytical methods are intended to evaluate conditions, systems, and
+          consequences rather than advocate for political parties or candidates.
+          Praedicta aims to communicate evidence consistently across jurisdictions
+          and institutional contexts.
+        </p>
+      </div>
+
+      <div class="principle">
+        <strong>9. Data Rights & Intellectual Property</strong>
+        <p>
+          Source-data ownership remains with the applicable data owner or licensor.
+          Praedicta's value is created through analytical methods, models,
+          derived intelligence, software, documentation, and deployment
+          architecture, subject to applicable agreements and licenses.
+        </p>
+      </div>
+
+      <div class="principle">
+        <strong>10. Deployment Requires Context</strong>
+        <p>
+          A public demonstration is not automatically an operational system.
+          Production deployment requires appropriate validation, scope definition,
+          data review, governance controls, user responsibilities, and
+          fit-for-purpose assessment.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="badge">Public Demonstrations</div>
+    <h2 style="margin-top:10px;">The Atlas is evidence of capability, not operational authority</h2>
+
     <ul>
-      <li>Personally identifiable information (PII)</li>
-      <li>Police crash reports</li>
-      <li>Enforcement-level case records</li>
-      <li>Individual behavioral tracking data</li>
-      <li>Surveillance feeds</li>
+      <li>Public Atlas projects are intended primarily for research, planning, demonstration, and situational understanding.</li>
+      <li>They may use open or otherwise lawfully accessible datasets and documented analytical assumptions.</li>
+      <li>They should not be interpreted as navigation instructions, regulatory determinations, insurance decisions, enforcement directives, or emergency orders.</li>
+      <li>Operational use requires a separately defined deployment context and appropriate validation.</li>
     </ul>
-    <p>
-      Structural intelligence is developed without dependency on individual-level data.
-    </p>
-  </div>
+  </section>
 
-  <h2>3. Derived Risk, Not Incident Exposure</h2>
-  <div class="card">
-    <p>
-      Our outputs represent derived structural risk indicators based on geometry,
-      density, land use, infrastructure configuration, and network topology.
-    </p>
-    <p>
-      We do not publish individual crash points for stigmatization or
-      neighborhood labeling.
-    </p>
-  </div>
+  <section class="card">
+    <div class="badge">Model Governance</div>
+    <h2 style="margin-top:10px;">Evidence, challenge, and falsifiability</h2>
 
-  <h2>4. Planning-First, Enforcement-Neutral</h2>
-  <div class="card">
-    <p>
-      Praedicta AI supports long-term planning, infrastructure prioritization,
-      resilience modeling, and master plan evaluation.
-    </p>
-    <p>
-      Our systems are not surveillance tools and are not built for
-      enforcement operations.
-    </p>
-  </div>
+    <div class="sub">
+      Praedicta analytical work is designed to separate evidence from inference
+      and to make consequential assumptions reviewable. Where appropriate,
+      analyses may include parallel technical perspectives, alternative hypotheses,
+      sensitivity testing, adversarial review, confidence assessment, and explicit
+      conditions that could weaken or falsify a conclusion.
+    </div>
 
-  <h2>5. Advisory-Layer Architecture</h2>
-  <div class="card">
-    <p>
-      All outputs are advisory and analytical in nature.
-      Praedicta AI does not replace professional engineering judgment,
-      regulatory authority, or statutory processes.
-    </p>
-  </div>
+    <div class="grid2">
 
-  <h2>6. Institutional Neutrality</h2>
-  <div class="card">
-    <p>
-      We do not rank governments, criticize data transparency frameworks,
-      or use predictive analytics as policy leverage.
-    </p>
-    <p>
-      Praedicta AI maintains institutional neutrality across jurisdictions.
-    </p>
-  </div>
+      <div class="principle">
+        <strong>Evidence</strong>
+        <p>
+          Identify the datasets, observed conditions, and authoritative sources
+          supporting the analysis.
+        </p>
+      </div>
 
-  <h2>7. Data Ownership & Intellectual Property</h2>
-  <div class="card">
-    <p>
-      Governments and public agencies retain ownership of their datasets.
-      Praedicta AI monetizes analytical methodology and derived intelligence,
-      not raw public data.
-    </p>
-  </div>
+      <div class="principle">
+        <strong>Method</strong>
+        <p>
+          Document the analytical process sufficiently to explain how an output
+          was produced and what assumptions materially influence it.
+        </p>
+      </div>
 
-  <h2>8. Privacy-by-Design Engineering</h2>
-  <div class="card">
-    <p>
-      Our architecture follows data-minimization principles.
-      We intentionally avoid ingestion of personal identifiers
-      and design models around structural signals.
-    </p>
-  </div>
+      <div class="principle">
+        <strong>Confidence</strong>
+        <p>
+          Distinguish stronger evidence from exploratory indicators and identify
+          important uncertainty when it affects decision relevance.
+        </p>
+      </div>
 
-  <h2>9. Governance Compatibility</h2>
-  <div class="card">
-    <p>
-      Praedicta AI is designed to align with common public-sector
-      governance frameworks, including:
-    </p>
-    <ul>
-      <li>Data minimization principles</li>
-      <li>Open-data compliance standards</li>
-      <li>Planning transparency requirements</li>
-      <li>Risk advisory best practices</li>
-    </ul>
-  </div>
+      <div class="principle">
+        <strong>Challenge</strong>
+        <p>
+          Consider plausible alternative explanations, failure modes,
+          contradictory evidence, and conditions under which the result
+          should be reconsidered.
+        </p>
+      </div>
 
-  <h2>Core Ethical Commitment</h2>
-  <div class="card">
-    <p>
-      Public safety innovation must respect institutional sovereignty.
-    </p>
-    <p>
-      If crash data is not public, we innovate without it.
-    </p>
-  </div>
+    </div>
+  </section>
 
-  <div class="footer">
-    © 2026 Praedicta AI — Governance-First Civic Intelligence Platform.
-  </div>
+  <section class="card">
+    <div class="badge">Client & Institutional Engagements</div>
+    <h2 style="margin-top:10px;">Governance scales with deployment</h2>
+
+    <div class="sub">
+      Pilot and operational engagements may involve non-public institutional
+      or client-provided information. In those cases, data access, permitted use,
+      confidentiality, retention, security, intellectual-property rights,
+      deliverables, and deployment responsibilities should be defined by the
+      applicable engagement terms and technical requirements.
+    </div>
+  </section>
+
+  <section class="commitment">
+    <div class="badge">Core Commitment</div>
+
+    <h2 style="margin-top:10px;">Clarity under uncertainty.</h2>
+
+    <p>
+      Praedicta exists to help institutions see structural pressure,
+      emerging risk, and potential consequences more clearly before important
+      decisions are locked in.
+    </p>
+
+    <p>
+      We aim to build intelligence that is explainable enough to question,
+      transparent enough to evaluate, and disciplined enough to acknowledge
+      what the evidence cannot establish.
+    </p>
+  </section>
+
+  <footer>
+    <b>Praedicta Inc.</b> — U.S. Delaware C-Corporation • Founded in Pittsburgh<br/>
+    GeoAI • Predictive Mapping • Decision Intelligence • Infrastructure Resilience
+    <br/><br/>
+    This charter describes Praedicta's operating principles and does not replace
+    contractual terms, professional standards, regulatory requirements, or
+    applicable law.
+  </footer>
 
 </div>
 </body>
 </html>
-

@@ -1,0 +1,207 @@
+[
+  {
+    "id": "bridge_pittsburgh_v1",
+    "title": "Pittsburgh Bridge Criticality Map (MVP v1)",
+    "domain": "Infrastructure",
+    "city": "Pittsburgh, PA",
+    "status": "MVP v1",
+    "summary": "Bridge criticality visualization for resilience planning and dependent-failure thinking.",
+    "url": "https://pittsburgh-bridge-criticality-map.netlify.app/",
+    "preview": "assets/preview/Pittsburgh Bridge Crilicallity Map.jpg"
+  },
+  {
+    "title": "CA SS4A — Crash Intelligence (Demo)",
+    "domain": "Road Safety",
+    "city": "California (Statewide)",
+    "status": "Prototype",
+    "summary": "Exploratory crash intelligence view aligned to SS4A planning: screening, patterns, prioritization (planning-only).",
+    "url": "https://praedicta-ca-ss4a-crash-intelligence.netlify.app/",
+    "preview": "assets/preview/CA-ss4a.png"
+  },
+  {
+    "title": "VisionZero USA — Fatal Crash Atlas",
+    "domain": "Road Safety",
+    "city": "United States",
+    "status": "MVP v1",
+    "summary": "Interactive national atlas of fatal traffic crashes across the United States with dynamic filtering for exploration and safety pattern discovery (planning-only).",
+    "url": "https://visionzero-usa.netlify.app/",
+    "preview": "assets/preview/US Crash Atlas.jpg"
+  },
+  {
+    "title": "Texas SS4A — Crash Intelligence (v1)",
+    "domain": "Road Safety",
+    "city": "Texas (Statewide)",
+    "status": "MVP v1",
+    "summary": "Statewide crash intelligence view aligned to SS4A-style planning: screening, patterns, and prioritization (planning-only).",
+    "url": "https://texas-ss4a-v1.netlify.app/",
+    "preview": "assets/preview/Texas SS4A.jpg"
+  },
+  {
+    "title": "Texas SS4A — Crash Intelligence",
+    "domain": "Road Safety",
+    "city": "Texas (Statewide)",
+    "status": "MVP v1",
+    "summary": "Statewide crash screening aligned with SS4A-style prioritization. Planning-oriented intelligence view using open datasets.",
+    "url": "https://texas-ss4a.netlify.app/",
+    "preview": "assets/preview/tx-ss4a-vz.jpg"
+  },
+  {
+    "id": "vz_portland_crash_risk",
+    "title": "Vision Zero — Crash Risk Map",
+    "domain": "Road Safety",
+    "city": "Portland, OR",
+    "status": "MVP v1",
+    "summary": "Crash concentration + risk layers using officassets/preview/VisionZero Portland,Oregon.jpgial crash data (planning/analysis only).",
+    "url": "https://visionzero-portland-or.netlify.app/",
+    "preview": "assets/preview/VisionZero Portland,Oregon.jpg"
+  },
+  {
+    "id": "vz_dc_actuarial",
+    "title": "VisionZero Washington, DC — Actuarial Risk Map",
+    "domain": "Road Safety",
+    "city": "Washington, DC",
+    "status": "MVP v1",
+    "summary": "Severity-weighted expected harm grid + policy overlays for prioritization.",
+    "url": "https://vision-zero-washington-dc.netlify.app/",
+    "preview": "assets/preview/VisionZero DC.jpg"
+  },
+  {
+    "id": "vz_pittsburgh_heatmap",
+    "title": "VisionZero — Allegheny Crash Explorer (Filters + Heatmap)",
+    "domain": "Road Safety",
+    "city": "Allegheny County, PA",
+    "status": "MVP v1",
+    "summary": "Filterable crash exploration (year/season/day/hour/weather) with clustering and heatmap.",
+    "url": "https://visionzeropittsburghheatmap.netlify.app/",
+    "preview": "assets/preview/VisionZero Pittsburgh.jpg"
+  },
+  {
+    "id": "vz_pittsburgh_markercluster",
+    "title": "VisionZero Pittsburgh — Markercluster Risk View",
+    "domain": "Road Safety",
+    "city": "Pittsburgh, PA",
+    "status": "Prototype",
+    "summary": "High-level marker clustering view for quick hotspot scanning.",
+    "url": "https://lightgradientboostedmachinelearning.netlify.app/visionzero_full_markercluster_map",
+    "preview": "assets/preview/VisionZero LightGrad Model Pittsburgh.jpg"
+  },
+  {
+    "id": "vz_sanjose",
+    "title": "San José VisionZero AI — Past KSI vs Predicted Top 5%",
+    "domain": "Road Safety",
+    "city": "San José, CA",
+    "status": "MVP v1",
+    "summary": "Compares observed severe harm vs predicted highest-risk segments (model-driven prioritization).",
+    "url": "https://visionzero-san-jose-map.netlify.app/visionzero_san_jose_map",
+    "preview": "assets/preview/VisionZero San Jose .jpg"
+  },
+  {
+    "id": "vz_toronto", 
+    "title": "Toronto — Structural Conflict Risk",
+    "domain": "Road Safety",
+    "city": "Toronto, Canada",
+    "status": "Prototype",
+    "summary": "Structural conflict screening model using open infrastructure and network geometry signals. Advisory planning layer.",
+    "url": "https://toronto-structural-conflict-map.netlify.app/",
+    "preview": "assets/preview/toronto.jpg"
+  },
+  {
+    "id": "safe_routes_pittsburgh",
+    "title": "Safe Routes to School — Pittsburgh MVP v1",
+    "domain": "Safe Routes",
+    "city": "Pittsburgh, PA",
+    "status": "MVP v1",
+    "summary": "Interactive routing prototype for school access planning (MVP workflow).",
+    "url": "https://safe-school-routs.onrender.com/",
+    "preview": "assets/preview/Safe School Route of Pittsburgh.jpg"
+  },
+  {
+    "id": "flood_coyote_creek",
+    "title": "Coyote Creek — Modeled Flood Exposure (Central San José)",
+    "domain": "Flood",
+    "city": "San José, CA",
+    "status": "MVP v1",
+    "summary": "Terrain-derived surge corridors + street-level exposure (situational awareness/planning).",
+    "url": "https://coyote-creek-flash-flood.netlify.app/",
+    "preview": "assets/preview/Coyote Creek Modeled Flood Central part of San Jose.jpg"
+  },
+  {
+    "id": "flood_coyote_creek_github",
+    "title": "Coyote Creek Flash Flood (GitHub Pages Mirror)",
+    "domain": "Flood",
+    "city": "San José, CA",
+    "status": "Prototype",
+    "summary": "Alternate public host of the Coyote Creek flood demo.",
+    "url": "https://visionzero-ai.github.io/coyote_creek_flash-flood-central-sj/",
+    "preview": ""
+  },
+  {
+    "id": "evac_readiness_sanjose",
+    "title": "Evacuation Flow Readiness Map — San José",
+    "domain": "Evacuation",
+    "city": "San José, CA",
+    "status": "MVP v1",
+    "summary": "Evacuation speed regime + readiness view for planning and drills.",
+    "url": "https://evamap-san-jose.netlify.app/",
+    "preview": "assets/preview/Evacuation Readiness Map of San Jose.jpg"
+  },
+  {
+    "id": "seismic_mobility_sanjose",
+    "title": "Seismic Mobility Readiness Map — San José Region",
+    "domain": "Seismic",
+    "city": "San José Region, CA",
+    "status": "Prototype",
+    "summary": "Mobility readiness + USGS MMI overlays for hazard-aware response planning.",
+    "url": "https://seismicmobilitysj.netlify.app/",
+    "preview": "assets/preview/Evacuation Mobility Readiness Map of San Jose.jpg"
+  },
+  {
+    "id": "flood_guadalupe_2025",
+    "title": "Guadalupe River Flash Flood — Surge Zones (July 2025)",
+    "domain": "Flood",
+    "city": "Texas (Guadalupe River)",
+    "status": "MVP v1",
+    "summary": "Surge propagation zones and recovery focus hypotheses for emergency coordination.",
+    "url": "https://guadalupe-flood-map-2025.netlify.app/",
+    "preview": "assets/preview/Guadalupe River Flash Flood Texas 2025.jpg"
+  },
+  {
+    "title": "Downtown Pittsburgh Office → Housing Conversion MVP",
+    "domain": "Urban Development",
+    "city": "Pittsburgh, PA",
+    "status": "MVP v1",
+    "summary": "Early screening map for downtown office-to-housing conversion readiness. Planning-oriented, informational (not a permitting decision tool).",
+    "url": "https://pittsburgh-office-conversion-mvp.netlify.app/",
+    "preview": "assets/preview/Pittsburgh Office Conversion MVP.jpg"
+  },
+  {
+    "title": "San José — Conversion Readiness Screener (MVP)",
+    "domain": "Urban Development",
+    "city": "San José, CA",
+    "status": "MVP v1",
+    "summary": "Early screening map for office-to-housing conversion readiness and downtown feasibility signals (planning-only).",
+    "url": "https://sj-conversion-readiness.netlify.app/",
+    "preview": "assets/preview/sj-conversion.jpg"
+  },
+  {
+    "title": "Singapore — Structural Conflict Risk (Demo)",
+    "domain": "Road Safety",
+    "city": "Singapore",
+    "status": "Prototype",
+    "summary": "Exploratory structural conflict screening using open transport and infrastructure datasets. Planning-oriented analytical view.",
+    "url": "https://singapore-structural-conflict-risk.netlify.app/",
+    "preview": "assets/preview/Singapore SCR.jpg"
+  },
+  {
+    "id": "vz_pittsburgh_dotted",
+    "title": "Crash Risk Map: Pittsburgh",
+    "domain": "Road Safety",
+    "city": "Pittsburgh",
+    "status": "MVP v1",
+    "summary": "Crash Risk Map dotted version",
+    "url": "https://crash-map-pittsburgh.netlify.app/",
+    "preview": "assets/preview/Crash Risk Map of Pittsburgh.jpg"
+  }
+]
+
+

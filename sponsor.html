@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Sponsor a City Build — Praedicta AI</title>
+  <style>
+    :root { --bg:#0b0f17; --card:#111827; --muted:#94a3b8; --text:#e5e7eb; --line:#1f2937; }
+    body { margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; background: linear-gradient(180deg,#070a10, #0b0f17); color:var(--text); }
+    a { color: inherit; text-decoration: none; }
+    .wrap { max-width: 900px; margin: 0 auto; padding: 22px 18px 60px; }
+    .badge { display:inline-flex; gap:8px; align-items:center; padding:8px 10px; border:1px solid var(--line); border-radius: 999px; background: rgba(17,24,39,0.55); color: var(--muted); font-size: 12px; }
+    h1 { margin:10px 0 6px; font-size: 26px; }
+    .sub { color: var(--muted); line-height:1.5; }
+    .card { margin-top:14px; border:1px solid var(--line); border-radius:16px; background: rgba(17,24,39,0.55); padding:14px; }
+    .row { display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+    .btn { border:1px solid var(--line); background: #0b1220; padding:10px 12px; border-radius: 12px; font-size: 14px; cursor:pointer; display:inline-flex; align-items:center; justify-content:center; gap:8px; }
+    .btn:hover { border-color:#334155; }
+    .open { display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:10px 12px; border-radius: 12px; border:1px solid #334155; background: rgba(2,6,23,0.55); }
+    .open:hover { border-color:#64748b; }
+    .small { color: var(--muted); font-size: 12px; line-height:1.5; }
+    ul { margin:8px 0 0; padding-left:18px; color: rgba(226,232,240,0.92); }
+    li { margin:6px 0; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="row" style="justify-content:space-between;">
+      <div class="badge">Praedicta AI • Collaboration</div>
+      <a class="btn" href="./index.html">← Back to Atlas</a>
+    </div>
+
+    <h1>Sponsor a City Build</h1>
+    <div class="sub">
+      Fast, planning-oriented risk maps for a city/region of your choice (traffic safety, flood exposure, evacuation, seismic mobility, infrastructure).
+      <br/>Independent demos → pilot-ready deliverables with clear scope and disclaimers.
+    </div>
+
+    <div class="card">
+      <h2 style="margin:0 0 8px; font-size:18px;">What you get</h2>
+      <ul>
+        <li>1 public Atlas page for the city (interactive map + legend + “how to use”)</li>
+        <li>1 short PDF “Pro Brief” (method, data sources, limitations, key findings)</li>
+        <li>Export bundle (GeoJSON / CSV / screenshots) when applicable</li>
+        <li>Collaboration options: data fixes, additional layers, periodic updates</li>
+      </ul>
+      <div class="small" style="margin-top:10px;">
+        Note: informational / planning only — not navigation, enforcement, insurance, or official policy.
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 style="margin:0 0 8px; font-size:18px;">How to order</h2>
+      <ul>
+        <li>Email: city/region + domain (traffic/flood/etc) + any priority layers</li>
+        <li>I reply with a 1-page scope + timeline + price</li>
+        <li>Build → review link → publish to Atlas (with your approval)</li>
+      </ul>
+      <div class="row" style="margin-top:12px;">
+        <a class="open" href="mailto:office@praedicta.ai?subject=Sponsor%20a%20City%20Build%20-%20Praedicta%20AI">Email me ↗</a>
+        <button class="btn" id="copyEmail" type="button">Copy email</button>
+      </div>
+      <div class="small" style="margin-top:10px;">
+        Email: <b>office@praedicta.ai</b> • Phone: <b>(412) 209-8192</b>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("copyEmail")?.addEventListener("click", async ()=>{
+      try{
+        await navigator.clipboard.writeText("office@praedicta.ai");
+        alert("Copied: office@praedicta.ai");
+      }catch(e){
+        prompt("Copy this email:", "office@praedicta.ai");
+      }
+    });
+  </script>
+</body>
+</html>
+

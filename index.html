@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Praedicta AI Atlas</title>
+  <style>
+    :root { --bg:#0b0f17; --card:#111827; --muted:#94a3b8; --text:#e5e7eb; --line:#1f2937; --chip:#0f172a; }
+    body { margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; background: linear-gradient(180deg,#070a10, #0b0f17); color:var(--text); }
+    a { color: inherit; text-decoration: none; }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 22px 18px 60px; }
+    header { display:flex; align-items:flex-start; justify-content:space-between; gap:16px; margin-bottom:16px; }
+    h1 { font-size: 26px; margin:0; letter-spacing:0.2px; }
+    .sub { color: var(--muted); margin-top:6px; line-height:1.4; max-width: 820px; }
+    .badge { display:inline-flex; gap:8px; align-items:center; padding:8px 10px; border:1px solid var(--line); border-radius: 999px; background: rgba(17,24,39,0.55); color: var(--muted); font-size: 12px; }
+    .bar { display:flex; flex-wrap:wrap; gap:10px; margin:16px 0 18px; padding:12px; border:1px solid var(--line); border-radius: 14px; background: rgba(17,24,39,0.45); }
+    .control { display:flex; flex-direction:column; gap:6px; min-width: 180px; }
+    label { font-size: 12px; color: var(--muted); }
+    select, input { background: #0b1220; color: var(--text); border: 1px solid var(--line); border-radius: 10px; padding: 10px 10px; font-size: 14px; outline:none; }
+    input { min-width: 220px; flex:1; }
+    .right { margin-left:auto; display:flex; gap:10px; align-items:flex-end; flex-wrap:wrap; }
+    .btn { border:1px solid var(--line); background: #0b1220; padding:10px 12px; border-radius: 12px; font-size: 14px; cursor:pointer; display:inline-flex; align-items:center; justify-content:center; gap:8px; }
+    .btn:hover { border-color:#334155; }
+    .grid { display:grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    @media (max-width: 980px){ .grid{ grid-template-columns: repeat(2,1fr);} }
+    @media (max-width: 620px){ .grid{ grid-template-columns: 1fr;} header{flex-direction:column;} }
+    .card { border:1px solid var(--line); border-radius: 16px; background: rgba(17,24,39,0.55); overflow:hidden; display:flex; flex-direction:column; min-height: 220px; }
+    .thumb { height: 128px; background: radial-gradient(circle at 30% 30%, rgba(99,102,241,.35), transparent 55%),
+                              radial-gradient(circle at 70% 70%, rgba(34,197,94,.25), transparent 55%),
+                              rgba(2,6,23,0.7);
+            border-bottom:1px solid var(--line); display:flex; align-items:center; justify-content:center; }
+    .thumb img { width:100%; height:100%; object-fit: cover; display:block; }
+    .thumb .ph { color: rgba(148,163,184,0.8); font-size: 12px; padding: 0 12px; text-align:center; }
+    .body { padding: 12px 12px 12px; display:flex; flex-direction:column; gap: 10px; flex:1; }
+    .topline { display:flex; gap:8px; align-items:flex-start; justify-content:space-between; }
+    .title { font-weight: 650; font-size: 15px; line-height:1.25; }
+    .meta { color: var(--muted); font-size: 12px; margin-top: 2px; }
+    .chips { display:flex; flex-wrap:wrap; gap:6px; margin-top: 2px; }
+    .chip { font-size: 12px; color: var(--muted); border:1px solid var(--line); background: rgba(15,23,42,0.6); padding: 5px 8px; border-radius: 999px; }
+    .summary { color: rgba(226,232,240,0.9); font-size: 13px; line-height:1.35; margin-top: 2px; }
+    .actions { margin-top:auto; display:flex; gap:8px; align-items:center; justify-content:space-between; padding-top: 8px; }
+    .open { display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:9px 10px; border-radius: 12px; border:1px solid #334155; background: rgba(2,6,23,0.55); }
+    .open:hover { border-color:#64748b; }
+    .small { color: var(--muted); font-size: 12px; }
+    footer { margin-top: 18px; color: var(--muted); font-size: 12px; line-height:1.5; border-top: 1px solid var(--line); padding-top: 12px; }
+    .kpi { display:flex; gap:10px; flex-wrap:wrap; margin-top:10px; }
+    .kpi .badge { background: rgba(2,6,23,0.45); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <div class="badge">Praedicta AI Atlas • Public Demonstrations</div>
+        <h1>Praedicta AI — Risk Intelligence Atlas</h1>
+        <div class="sub">
+          A public catalog of independent, planning-oriented maps across road safety, flood exposure, evacuation readiness, seismic mobility, and infrastructure resilience.
+          <br/>These demos are <b>informational</b> and intended for analysis / situational awareness — not navigation, enforcement, insurance, or official policy.
+        </div>
+        <div class="kpi">
+          <div class="badge" id="kpiTotal">Projects: —</div>
+          <div class="badge" id="kpiDomains">Domains: —</div>
+          <div class="badge" id="kpiCities">Cities/Regions: —</div>
+        </div>
+      </div>
+
+      <!-- UPDATED: buttons + maintained badge -->
+      <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+        <a class="btn" href="sponsor.html">Sponsor a City Build</a>
+        <a class="btn" href="#contact">Contact</a>
+        <div class="badge">Maintained by Anuar Aubakirov</div>
+      </div>
+    </header>
+
+    <div class="bar">
+      <div class="control">
+        <label>Search</label>
+        <input id="q" placeholder="e.g., Portland, flood, evacuation, bridge, risk" />
+      </div>
+
+      <div class="control">
+        <label>Domain</label>
+        <select id="domain"></select>
+      </div>
+
+      <div class="control">
+        <label>City / Region</label>
+        <select id="city"></select>
+      </div>
+
+      <div class="control">
+        <label>Status</label>
+        <select id="status"></select>
+      </div>
+
+      <div class="right">
+        <button class="btn" id="reset" type="button">Reset</button>
+      </div>
+    </div>
+
+    <div class="grid" id="grid"></div>
+
+    <!-- ADDED: Contact section -->
+    <section id="contact" style="margin-top:18px; border:1px solid var(--line); border-radius:16px; background: rgba(17,24,39,0.45); padding:14px;">
+      <div style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; align-items:flex-start;">
+        <div style="max-width:720px;">
+          <div class="badge">Contact</div>
+          <h2 style="margin:10px 0 6px; font-size:18px;">Connect with the builder</h2>
+          <div style="color:var(--muted); line-height:1.5;">
+            Want your city added, a Pro Brief (PDF + exports), or a partnership? Email me — I respond fastest by email.
+          </div>
+          <div class="chips" style="margin-top:10px;">
+            <div class="chip">Sponsor a City Build</div>
+            <div class="chip">Pro Brief (PDF + exports)</div>
+            <div class="chip">Partner / reseller</div>
+            <div class="chip">Data/API licensing</div>
+          </div>
+          <div style="margin-top:10px; color:var(--muted); font-size:12px; line-height:1.5;">
+            Independent civic-tech demos; agencies evaluate operational use via a scoped pilot + governance review.
+          </div>
+        </div>
+
+        <div style="min-width:280px; display:flex; flex-direction:column; gap:10px;">
+          <a class="open" href="mailto:office@praedicta.ai?subject=Praedicta%20Atlas%20Inquiry" style="justify-content:center;">
+            Email me ↗
+          </a>
+
+          <button class="btn" id="copyEmail" type="button">Copy email</button>
+
+          <a class="btn" href="sponsor.html" style="text-align:center;">Sponsor a City Build</a>
+
+          <div class="small">
+            Email: <span style="font-weight:600;">office@praedicta.ai</span><br/>
+            Phone: <span style="font-weight:600;">(412) 209-8192</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <b>Interpretation & Goodwill:</b> These maps are published to support public understanding, planning discussions, and civic resilience thinking.
+      Where applicable, methods are derived from open data and openly stated assumptions. If an agency wishes to evaluate operational use,
+      the recommended next step is a scoped pilot + data governance review (sources, updates, QA, and disclaimers).
+      <br/><br/>
+      <a href="governance.html" style="color:var(--muted); text-decoration:underline;">
+        Governance Charter
+      </a>
+    </footer>
+  </div>
+
+<script>
+  const state = { data: [], filtered: [] };
+
+  const elGrid = document.getElementById('grid');
+  const elQ = document.getElementById('q');
+  const elDomain = document.getElementById('domain');
+  const elCity = document.getElementById('city');
+  const elStatus = document.getElementById('status');
+  const elReset = document.getElementById('reset');
+
+  const kpiTotal = document.getElementById('kpiTotal');
+  const kpiDomains = document.getElementById('kpiDomains');
+  const kpiCities = document.getElementById('kpiCities');
+
+  function uniq(arr){ return [...new Set(arr)].filter(Boolean).sort((a,b)=>a.localeCompare(b)); }
+
+  function setOptions(select, values, allLabel="All"){
+    select.innerHTML = "";
+    const optAll = document.createElement('option');
+    optAll.value = "";
+    optAll.textContent = allLabel;
+    select.appendChild(optAll);
+    values.forEach(v=>{
+      const o = document.createElement('option');
+      o.value = v;
+      o.textContent = v;
+      select.appendChild(o);
+    });
+  }
+
+  function matchText(p, q){
+    if(!q) return true;
+    const hay = [
+      p.title, p.domain, p.city, p.status, p.summary
+    ].join(" ").toLowerCase();
+    return hay.includes(q.toLowerCase());
+  }
+
+  function applyFilters(){
+    const q = elQ.value.trim();
+    const d = elDomain.value;
+    const c = elCity.value;
+    const s = elStatus.value;
+
+    state.filtered = state.data.filter(p=>{
+      if(d && p.domain !== d) return false;
+      if(c && p.city !== c) return false;
+      if(s && p.status !== s) return false;
+      if(!matchText(p, q)) return false;
+      return true;
+    });
+
+    render();
+  }
+
+  function card(p){
+    const hasImg = p.preview && p.preview.length > 0;
+    return `
+      <div class="card">
+        <div class="thumb">
+          ${hasImg ? `<img src="${p.preview}" alt="${escapeHtml(p.title)}"/>` : `<div class="ph">Add a screenshot later (optional)<br/><span style="opacity:.8">${escapeHtml(p.domain)} • ${escapeHtml(p.city)}</span></div>`}
+        </div>
+        <div class="body">
+          <div class="topline">
+            <div>
+              <div class="title">${escapeHtml(p.title)}</div>
+              <div class="meta">${escapeHtml(p.city)}</div>
+              <div class="chips">
+                <div class="chip">${escapeHtml(p.domain)}</div>
+                <div class="chip">${escapeHtml(p.status)}</div>
+              </div>
+            </div>
+          </div>
+          <div class="summary">${escapeHtml(p.summary || "")}</div>
+          <div class="actions">
+            <!-- UPDATED: open + contact buttons -->
+            <div style="display:flex; gap:8px; align-items:center;">
+              <a class="open" href="${p.url}" target="_blank" rel="noopener">
+                Open map <span style="opacity:.7">↗</span>
+              </a>
+              <a class="btn" href="mailto:office@praedicta.ai?subject=Praedicta%20Atlas%20-%20${encodeURIComponent(p.title)}">
+                Contact
+              </a>
+            </div>
+
+            <div class="small">${escapeHtml(shortHost(p.url))}</div>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  function shortHost(url){
+    try { return new URL(url).host; } catch(e) { return ""; }
+  }
+
+  function escapeHtml(str){
+    return (str || "")
+      .replaceAll("&","&amp;")
+      .replaceAll("<","&lt;")
+      .replaceAll(">","&gt;")
+      .replaceAll('"',"&quot;")
+      .replaceAll("'","&#039;");
+  }
+
+  function render(){
+    elGrid.innerHTML = state.filtered.map(card).join("");
+    kpiTotal.textContent = `Projects: ${state.data.length} (Showing ${state.filtered.length})`;
+    kpiDomains.textContent = `Domains: ${uniq(state.data.map(x=>x.domain)).length}`;
+    kpiCities.textContent = `Cities/Regions: ${uniq(state.data.map(x=>x.city)).length}`;
+  }
+
+  async function init(){
+    const res = await fetch("projects.json", { cache: "no-store" });
+    state.data = await res.json();
+
+    setOptions(elDomain, uniq(state.data.map(x=>x.domain)), "All domains");
+    setOptions(elCity, uniq(state.data.map(x=>x.city)), "All cities/regions");
+    setOptions(elStatus, uniq(state.data.map(x=>x.status)), "All statuses");
+
+    const orderStatus = {"MVP v1": 0, "MVP": 0, "Prototype": 1, "Research": 2};
+    state.data.sort((a,b)=>{
+      const sa = orderStatus[a.status] ?? 9;
+      const sb = orderStatus[b.status] ?? 9;
+      if(sa !== sb) return sa - sb;
+      return (a.domain || "").localeCompare(b.domain || "");
+    });
+
+    state.filtered = state.data;
+    render();
+    applyFilters();
+  }
+
+  [elQ, elDomain, elCity, elStatus].forEach(el=>el.addEventListener('input', applyFilters));
+  elReset.addEventListener('click', ()=>{
+    elQ.value = ""; elDomain.value = ""; elCity.value=""; elStatus.value="";
+    applyFilters();
+  });
+
+  // ADDED: Copy email button
+  document.getElementById("copyEmail")?.addEventListener("click", async ()=>{
+    try{
+      await navigator.clipboard.writeText("office@praedicta.ai");
+      alert("Copied: office@praedicta.ai");
+    }catch(e){
+      prompt("Copy this email:", "office@praedicta.ai");
+    }
+  });
+
+  init();
+</script>
+</body>
+</html>

@@ -76,6 +76,16 @@
     "preview": "assets/preview/VisionZero Pittsburgh.jpg"
   },
   {
+  "id": "pittsburgh_blind_prediction_v1",
+  "title": "Pittsburgh — Blind Prediction Test",
+  "domain": "Predictive Mapping",
+  "city": "Pittsburgh, PA",
+  "status": "Research Validation",
+  "summary": "Retrospective spatial validation testing whether structural road context can identify where crashes subsequently emerge among road segments with no observed crashes in the preceding two years.",
+  "url": "https://praedicta-pittsburgh-blind-prediction.netlify.app/",
+  "preview": "assets/preview/Pittsburgh Blind Prediction Test.png"
+  },
+  {
     "id": "vz_pittsburgh_markercluster",
     "title": "VisionZero Pittsburgh — Markercluster Risk View",
     "domain": "Road Safety",

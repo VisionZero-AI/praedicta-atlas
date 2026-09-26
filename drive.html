@@ -1,0 +1,580 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#07111f">
+  <title>Praedicta Drive — Pittsburgh Road Context</title>
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: #07111f;
+      color: #f4f7fb;
+      font-family: Arial, Helvetica, sans-serif;
+      min-height: 100vh;
+    }
+
+    .app {
+      width: min(760px, 100%);
+      margin: 0 auto;
+      padding: 24px 18px 50px;
+    }
+
+    .brand {
+      font-size: 13px;
+      letter-spacing: 3px;
+      font-weight: 700;
+      opacity: .75;
+    }
+
+    h1 {
+      margin: 8px 0 2px;
+      font-size: 30px;
+    }
+
+    .subtitle {
+      color: #9eacbd;
+      margin-bottom: 26px;
+    }
+
+    .panel {
+      background: #0d1928;
+      border: 1px solid #203044;
+      border-radius: 18px;
+      padding: 22px;
+      margin-bottom: 16px;
+    }
+
+    .road {
+      text-align: center;
+      padding: 26px 10px;
+    }
+
+    #roadName {
+      font-size: clamp(34px, 9vw, 64px);
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+
+    #roadClass {
+      color: #aeb9c8;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 13px;
+    }
+
+    .label {
+      color: #8f9daf;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-size: 11px;
+      margin-bottom: 8px;
+    }
+
+    .percentile {
+      text-align: center;
+      font-size: 58px;
+      font-weight: 800;
+      line-height: 1;
+      margin: 10px 0;
+    }
+
+    #contextText {
+      text-align: center;
+      color: #b5c0ce;
+      min-height: 22px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .metric {
+      background: #091421;
+      border-radius: 12px;
+      padding: 15px;
+    }
+
+    .metric .value {
+      font-size: 21px;
+      font-weight: 700;
+      overflow-wrap: anywhere;
+    }
+
+    .status {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 16px 0;
+    }
+
+    .badge {
+      border: 1px solid #304258;
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .controls {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 10px;
+      margin: 20px 0;
+    }
+
+    button {
+      border: 0;
+      border-radius: 14px;
+      padding: 18px;
+      font-size: 16px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    #startButton {
+      background: #f4f7fb;
+      color: #07111f;
+    }
+
+    #stopButton {
+      background: #253447;
+      color: #f4f7fb;
+    }
+
+    button:disabled {
+      opacity: .4;
+      cursor: default;
+    }
+
+    #message {
+      min-height: 22px;
+      color: #b4bfcd;
+      margin-bottom: 16px;
+      font-size: 14px;
+    }
+
+    .historyItem {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      border-top: 1px solid #203044;
+      padding: 12px 0;
+      font-size: 14px;
+    }
+
+    .historyItem:first-child {
+      border-top: 0;
+    }
+
+    .historyValue {
+      color: #b7c3d1;
+      white-space: nowrap;
+    }
+
+    .notice {
+      color: #9daabb;
+      line-height: 1.55;
+      font-size: 12px;
+      margin-top: 22px;
+      border-top: 1px solid #203044;
+      padding-top: 18px;
+    }
+
+    .small {
+      color: #8190a2;
+      font-size: 12px;
+    }
+
+    @media (max-width: 500px) {
+      .app { padding-top: 18px; }
+      .panel { padding: 17px; }
+      .grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+<div class="app">
+
+  <div class="brand">PRAEDICTA INC.</div>
+  <h1>Praedicta Drive</h1>
+  <div class="subtitle">Pittsburgh Road Context · Research Preview</div>
+
+  <div class="panel road">
+    <div class="label">Current matched road</div>
+    <div id="roadName">READY</div>
+    <div id="roadClass">Press Start Drive</div>
+  </div>
+
+  <div class="panel">
+    <div class="label">Structural context percentile</div>
+    <div id="percentile" class="percentile">—</div>
+    <div id="contextText">Waiting for location.</div>
+  </div>
+
+  <div class="panel">
+    <div class="grid">
+
+      <div class="metric">
+        <div class="label">Matched road</div>
+        <div id="matchDistance" class="value">—</div>
+      </div>
+
+      <div class="metric">
+        <div class="label">GPS accuracy</div>
+        <div id="gpsAccuracy" class="value">—</div>
+      </div>
+
+      <div class="metric">
+        <div class="label">Segment</div>
+        <div id="segmentId" class="value">—</div>
+      </div>
+
+      <div class="metric">
+        <div class="label">Validation</div>
+        <div id="validation" class="value">—</div>
+      </div>
+
+    </div>
+
+    <div class="status">
+      <div id="gpsStatus" class="badge">○ GPS INACTIVE</div>
+      <div id="apiStatus" class="badge">○ API WAITING</div>
+    </div>
+
+    <div id="message">Start while stationary. No interaction is required once monitoring begins.</div>
+  </div>
+
+  <div class="controls">
+    <button id="startButton">START DRIVE</button>
+    <button id="stopButton" disabled>STOP</button>
+  </div>
+
+  <div class="panel">
+    <div class="label">Recent road segments</div>
+    <div id="history">
+      <div class="small">No road segments recorded yet.</div>
+    </div>
+  </div>
+
+  <div class="notice">
+    <strong>Research Preview.</strong>
+    Praedicta Drive displays structural road context from the Praedicta
+    Pittsburgh Road Context API. Structural percentiles are available only
+    for road segments within the retrospective validation cohort.
+    A null percentile means validation information is unavailable; it does
+    not mean zero risk.
+    <br><br>
+    This interface does not provide real-time collision warnings, calibrated
+    crash probabilities, safety certification, or safe/unsafe road
+    classifications. Do not interact with this interface while operating a vehicle.
+  </div>
+
+</div>
+
+<script>
+const API =
+  "https://api.praedicta.ai/v1/road-context";
+
+const MIN_MOVE_METERS = 20;
+const MIN_QUERY_INTERVAL_MS = 3000;
+
+let watchId = null;
+let lastQueryPosition = null;
+let lastQueryTime = 0;
+let lastSegmentId = null;
+let historyItems = [];
+let requestInFlight = false;
+
+const roadName = document.getElementById("roadName");
+const roadClass = document.getElementById("roadClass");
+const percentile = document.getElementById("percentile");
+const contextText = document.getElementById("contextText");
+const matchDistance = document.getElementById("matchDistance");
+const gpsAccuracy = document.getElementById("gpsAccuracy");
+const segmentId = document.getElementById("segmentId");
+const validation = document.getElementById("validation");
+const gpsStatus = document.getElementById("gpsStatus");
+const apiStatus = document.getElementById("apiStatus");
+const message = document.getElementById("message");
+const history = document.getElementById("history");
+const startButton = document.getElementById("startButton");
+const stopButton = document.getElementById("stopButton");
+
+function distanceMeters(a, b) {
+  const R = 6371000;
+  const toRad = x => x * Math.PI / 180;
+
+  const dLat = toRad(b.lat - a.lat);
+  const dLon = toRad(b.lon - a.lon);
+
+  const lat1 = toRad(a.lat);
+  const lat2 = toRad(b.lat);
+
+  const h =
+    Math.sin(dLat / 2) ** 2 +
+    Math.cos(lat1) *
+    Math.cos(lat2) *
+    Math.sin(dLon / 2) ** 2;
+
+  return 2 * R * Math.asin(Math.sqrt(h));
+}
+
+function renderHistory() {
+  if (!historyItems.length) {
+    history.innerHTML =
+      '<div class="small">No road segments recorded yet.</div>';
+    return;
+  }
+
+  history.innerHTML = historyItems.map(item => `
+    <div class="historyItem">
+      <div>
+        <strong>${escapeHtml(item.name)}</strong><br>
+        <span class="small">Segment ${escapeHtml(String(item.id))}</span>
+      </div>
+      <div class="historyValue">${escapeHtml(item.context)}</div>
+    </div>
+  `).join("");
+}
+
+function escapeHtml(value) {
+  return value
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+function addHistory(data) {
+  if (data.segment_id === lastSegmentId) return;
+
+  lastSegmentId = data.segment_id;
+
+  const p = data.structural_context?.percentile;
+
+  historyItems.unshift({
+    id: data.segment_id,
+    name: data.street?.name || "Unnamed road",
+    context: p == null ? "No percentile" : Number(p).toFixed(1)
+  });
+
+  historyItems = historyItems.slice(0, 8);
+  renderHistory();
+}
+
+function displayContext(data) {
+  roadName.textContent =
+    data.street?.name || "UNNAMED ROAD";
+
+  const roadParts = [];
+
+  if (data.street?.road_class) {
+    roadParts.push(data.street.road_class);
+  }
+
+  if (data.street?.from && data.street?.to) {
+    roadParts.push(
+      `${data.street.from} → ${data.street.to}`
+    );
+  }
+
+  roadClass.textContent =
+    roadParts.join(" · ") || "Road context";
+
+  segmentId.textContent =
+    data.segment_id ?? "—";
+
+  const d = data.query?.distance_to_segment_m;
+
+  matchDistance.textContent =
+    d == null ? "—" : `${Number(d).toFixed(1)} m`;
+
+  const inValidation =
+    data.validation?.in_validation_cohort === true;
+
+  validation.textContent =
+    inValidation ? "IN COHORT" : "OUTSIDE";
+
+  const p = data.structural_context?.percentile;
+
+  if (p == null) {
+    percentile.textContent = "—";
+    contextText.textContent =
+      "Outside validation cohort — percentile unavailable.";
+  } else {
+    percentile.textContent =
+      Number(p).toFixed(1);
+
+    const tier = data.structural_context?.tier;
+
+    contextText.textContent =
+      tier
+        ? `${tier} structural context · retrospective validation`
+        : "Structural context · retrospective validation";
+  }
+
+  addHistory(data);
+}
+
+async function queryRoadContext(lat, lon) {
+  if (requestInFlight) return;
+
+  requestInFlight = true;
+  apiStatus.textContent = "● API QUERYING";
+
+  try {
+    const url =
+      `${API}?lat=${encodeURIComponent(lat)}&lon=${encodeURIComponent(lon)}`;
+
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      throw new Error(`API returned HTTP ${response.status}`);
+    }
+
+    const data = await response.json();
+
+    displayContext(data);
+
+    apiStatus.textContent = "● API ONLINE";
+    message.textContent =
+      "Monitoring road context automatically.";
+
+  } catch (error) {
+    apiStatus.textContent = "○ API ERROR";
+    message.textContent =
+      `API request failed: ${error.message}`;
+  } finally {
+    requestInFlight = false;
+  }
+}
+
+function handlePosition(position) {
+  const lat = position.coords.latitude;
+  const lon = position.coords.longitude;
+  const accuracy = position.coords.accuracy;
+
+  gpsStatus.textContent = "● GPS ACTIVE";
+
+  gpsAccuracy.textContent =
+    Number.isFinite(accuracy)
+      ? `${Math.round(accuracy)} m`
+      : "—";
+
+  const current = { lat, lon };
+  const now = Date.now();
+
+  let shouldQuery = false;
+
+  if (!lastQueryPosition) {
+    shouldQuery = true;
+  } else {
+    const moved =
+      distanceMeters(lastQueryPosition, current);
+
+    const elapsed =
+      now - lastQueryTime;
+
+    if (
+      moved >= MIN_MOVE_METERS &&
+      elapsed >= MIN_QUERY_INTERVAL_MS
+    ) {
+      shouldQuery = true;
+    }
+  }
+
+  if (shouldQuery) {
+    lastQueryPosition = current;
+    lastQueryTime = now;
+    queryRoadContext(lat, lon);
+  }
+}
+
+function handlePositionError(error) {
+  gpsStatus.textContent = "○ GPS ERROR";
+
+  switch (error.code) {
+    case error.PERMISSION_DENIED:
+      message.textContent =
+        "Location permission was denied. Enable location access for praedicta.ai.";
+      break;
+
+    case error.POSITION_UNAVAILABLE:
+      message.textContent =
+        "Current location is unavailable.";
+      break;
+
+    case error.TIMEOUT:
+      message.textContent =
+        "GPS location request timed out.";
+      break;
+
+    default:
+      message.textContent =
+        "Unable to obtain GPS location.";
+  }
+}
+
+function startDrive() {
+  if (!navigator.geolocation) {
+    message.textContent =
+      "This browser does not support geolocation.";
+    return;
+  }
+
+  startButton.disabled = true;
+  stopButton.disabled = false;
+
+  roadName.textContent = "LOCATING…";
+  roadClass.textContent = "Waiting for GPS";
+  gpsStatus.textContent = "● GPS STARTING";
+  apiStatus.textContent = "○ API WAITING";
+
+  message.textContent =
+    "Requesting location permission…";
+
+  watchId = navigator.geolocation.watchPosition(
+    handlePosition,
+    handlePositionError,
+    {
+      enableHighAccuracy: true,
+      maximumAge: 2000,
+      timeout: 15000
+    }
+  );
+}
+
+function stopDrive() {
+  if (watchId !== null) {
+    navigator.geolocation.clearWatch(watchId);
+    watchId = null;
+  }
+
+  startButton.disabled = false;
+  stopButton.disabled = true;
+
+  gpsStatus.textContent = "○ GPS INACTIVE";
+  apiStatus.textContent = "○ API WAITING";
+
+  message.textContent =
+    "Monitoring stopped.";
+
+  lastQueryPosition = null;
+  lastQueryTime = 0;
+}
+
+startButton.addEventListener("click", startDrive);
+stopButton.addEventListener("click", stopDrive);
+</script>
+
+</body>
+</html>

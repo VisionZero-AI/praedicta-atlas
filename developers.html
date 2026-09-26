@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="description" content="Praedicta API provides machine-readable predictive infrastructure context for applications, AI agents, mobility systems, and digital twins."/>
+  <title>Developers — Praedicta API</title>
+
+  <style>
+    :root {
+      --bg:#0b0f17;
+      --card:#111827;
+      --muted:#94a3b8;
+      --text:#e5e7eb;
+      --line:#1f2937;
+      --accent:#60a5fa;
+    }
+
+    body {
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+      background:linear-gradient(180deg,#070a10,#0b0f17);
+      color:var(--text);
+    }
+
+    a { color:inherit; text-decoration:none; }
+
+    .wrap {
+      max-width:1000px;
+      margin:0 auto;
+      padding:22px 18px 60px;
+    }
+
+    .badge {
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      padding:8px 10px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background:rgba(17,24,39,.55);
+      color:var(--muted);
+      font-size:12px;
+    }
+
+    .row {
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+
+    .btn {
+      border:1px solid var(--line);
+      background:#0b1220;
+      padding:10px 12px;
+      border-radius:12px;
+      font-size:14px;
+      cursor:pointer;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+    }
+
+    .btn:hover { border-color:#475569; }
+
+    .primary {
+      border-color:#475569;
+      background:rgba(15,23,42,.9);
+    }
+
+    h1 {
+      margin:22px 0 8px;
+      font-size:38px;
+      line-height:1.12;
+      max-width:850px;
+    }
+
+    h2 { margin:0 0 8px; font-size:19px; }
+
+    .sub {
+      color:var(--muted);
+      line-height:1.65;
+      max-width:850px;
+      font-size:15px;
+    }
+
+    .card {
+      margin-top:16px;
+      border:1px solid var(--line);
+      border-radius:16px;
+      background:rgba(17,24,39,.5);
+      padding:18px;
+    }
+
+    .grid3 {
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:10px;
+      margin-top:12px;
+    }
+
+    .mini {
+      border:1px solid var(--line);
+      border-radius:12px;
+      background:rgba(2,6,23,.4);
+      padding:14px;
+    }
+
+    .mini strong {
+      display:block;
+      margin-bottom:6px;
+      font-size:14px;
+    }
+
+    .mini p {
+      margin:0;
+      color:var(--muted);
+      font-size:12px;
+      line-height:1.5;
+    }
+
+    .endpoint {
+      margin-top:12px;
+      padding:13px 14px;
+      border:1px solid var(--line);
+      border-radius:12px;
+      background:#020617;
+      font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+      font-size:13px;
+      overflow-wrap:anywhere;
+    }
+
+    .method {
+      color:#86efac;
+      font-weight:700;
+      margin-right:10px;
+    }
+
+    .preview {
+      margin-top:16px;
+      border:1px solid #334155;
+      border-radius:16px;
+      background:rgba(2,6,23,.55);
+      padding:20px;
+    }
+
+    .preview p {
+      color:var(--muted);
+      line-height:1.6;
+    }
+
+    footer {
+      margin-top:22px;
+      padding-top:14px;
+      border-top:1px solid var(--line);
+      color:var(--muted);
+      font-size:12px;
+      line-height:1.5;
+    }
+
+    @media(max-width:800px) {
+      .grid3 { grid-template-columns:1fr; }
+      h1 { font-size:29px; }
+    }
+  </style>
+</head>
+
+<body>
+<div class="wrap">
+
+  <div class="row" style="justify-content:space-between;">
+    <div class="badge">Praedicta Inc. • Developers</div>
+
+    <div class="row">
+      <a class="btn" href="./index.html">Explore the Atlas</a>
+      <a class="btn" href="./about.html">Company</a>
+      <a class="btn" href="./governance.html">Governance</a>
+    </div>
+  </div>
+
+  <h1>Predictive infrastructure context for machines.</h1>
+
+  <div class="sub">
+    Praedicta turns predictive mapping research into machine-readable
+    infrastructure context. Applications, AI agents, mobility systems,
+    and digital twins can query physical-world context through a simple API.
+  </div>
+
+  <div class="row" style="margin-top:18px;">
+    <a class="btn primary" href="https://api.praedicta.ai/docs" target="_blank" rel="noopener">
+      Explore API Documentation ↗
+    </a>
+    <a class="btn" href="https://api.praedicta.ai/openapi.json" target="_blank" rel="noopener">
+      OpenAPI Specification ↗
+    </a>
+  </div>
+
+  <section class="card">
+    <div class="badge">Research Preview • v0.2</div>
+    <h2 style="margin-top:14px;">Pittsburgh Road Context API</h2>
+
+    <div class="sub">
+      Query Pittsburgh road infrastructure by geographic coordinate or
+      canonical road segment. The API returns structural characteristics,
+      validation scope, and, where available, a validated structural percentile.
+    </div>
+
+    <div class="endpoint">
+      Base URL: https://api.praedicta.ai
+    </div>
+
+    <div class="grid3">
+      <div class="mini">
+        <strong>Coordinate Context</strong>
+        <p>Resolve a geographic coordinate to the nearest actual Pittsburgh road segment.</p>
+      </div>
+
+      <div class="mini">
+        <strong>Segment Context</strong>
+        <p>Retrieve structural characteristics and validation metadata by segment ID.</p>
+      </div>
+
+      <div class="mini">
+        <strong>Route Context</strong>
+        <p>Evaluate structural context across a sequence of supplied route points.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Endpoints</h2>
+
+    <div class="endpoint">
+      <span class="method">GET</span>/v1/road-context?lat={latitude}&amp;lon={longitude}
+    </div>
+
+    <div class="endpoint">
+      <span class="method">GET</span>/v1/segments/{segment_id}
+    </div>
+
+    <div class="endpoint">
+      <span class="method">POST</span>/v1/route-context
+    </div>
+
+    <div class="endpoint">
+      <span class="method">GET</span>/health
+    </div>
+  </section>
+
+  <section class="preview">
+    <h2>What the API represents</h2>
+
+    <p>
+      The current Pittsburgh model is based on retrospective spatial
+      out-of-fold validation. Structural characteristics of the road network
+      contained information associated with where previously crash-free
+      road segments subsequently experienced crashes, including when
+      geographically separated areas were withheld from model training.
+    </p>
+
+    <p>
+      The production API resolves queries against 19,628 Pittsburgh road
+      segments. Structural percentile information is returned only where
+      the segment belongs to the validated zero-history cohort.
+      A null percentile means that validation information is unavailable;
+      it does not mean zero risk.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>Responsible use</h2>
+
+    <div class="sub">
+      Praedicta Road Context API is a research-preview decision-support
+      interface. It does not provide calibrated crash probabilities,
+      safety certification, or safe/unsafe road classifications.
+      Structural context should be interpreted alongside appropriate
+      operational, engineering, traffic-exposure, and domain-specific evidence.
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Build with Praedicta</h2>
+
+    <div class="sub">
+      We are exploring integrations with mobility systems, infrastructure
+      planning platforms, digital twins, AI agents, and Physical AI applications.
+    </div>
+
+    <div class="row" style="margin-top:14px;">
+      <a class="btn primary"
+         href="mailto:office@praedicta.ai?subject=Praedicta%20API%20Integration">
+        Discuss an Integration ↗
+      </a>
+
+      <a class="btn"
+         href="https://api.praedicta.ai/docs"
+         target="_blank"
+         rel="noopener">
+        Developer Documentation ↗
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Praedicta Inc. • GeoAI • Predictive Mapping & Decision Intelligence
+    <br/>
+    Research-preview API. Outputs should be interpreted within their documented validation scope.
+  </footer>
+
+</div>
+</body>
+</html>

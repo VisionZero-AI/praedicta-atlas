@@ -148,6 +148,30 @@
       color: #f4f7fb;
     }
 
+    .fieldTestGrid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .fieldTestActions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    #exportButton {
+      background: #f4f7fb;
+      color: #07111f;
+    }
+
+    #clearLogButton {
+      background: #253447;
+      color: #f4f7fb;
+    }
+
     button:disabled {
       opacity: .4;
       cursor: default;
@@ -258,6 +282,35 @@
   </div>
 
   <div class="panel">
+    <div class="label">Field test session</div>
+    <div class="fieldTestGrid">
+      <div class="metric">
+        <div class="label">Samples logged</div>
+        <div id="samplesLogged" class="value">0</div>
+      </div>
+      <div class="metric">
+        <div class="label">Successful matches</div>
+        <div id="successfulMatches" class="value">0</div>
+      </div>
+      <div class="metric">
+        <div class="label">No match / API errors</div>
+        <div id="failedMatches" class="value">0</div>
+      </div>
+      <div class="metric">
+        <div class="label">Duration</div>
+        <div id="sessionDuration" class="value">00:00</div>
+      </div>
+    </div>
+    <div class="fieldTestActions">
+      <button id="exportButton" disabled>EXPORT CSV</button>
+      <button id="clearLogButton" disabled>CLEAR LOG</button>
+    </div>
+    <div class="small" style="margin-top:12px;">
+      Logs only API query samples from this browser session. Export after the passenger test.
+    </div>
+  </div>
+
+  <div class="panel">
     <div class="label">Recent road segments</div>
     <div id="history">
       <div class="small">No road segments recorded yet.</div>
@@ -292,6 +345,9 @@ let lastQueryTime = 0;
 let lastSegmentId = null;
 let historyItems = [];
 let requestInFlight = false;
+let fieldTestLog = [];
+let sessionStartTime = null;
+let durationTimer = null;
 
 const roadName = document.getElementById("roadName");
 const roadClass = document.getElementById("roadClass");
@@ -307,6 +363,92 @@ const message = document.getElementById("message");
 const history = document.getElementById("history");
 const startButton = document.getElementById("startButton");
 const stopButton = document.getElementById("stopButton");
+const samplesLogged = document.getElementById("samplesLogged");
+const successfulMatches = document.getElementById("successfulMatches");
+const failedMatches = document.getElementById("failedMatches");
+const sessionDuration = document.getElementById("sessionDuration");
+const exportButton = document.getElementById("exportButton");
+const clearLogButton = document.getElementById("clearLogButton");
+
+function formatDuration(ms) {
+  const totalSeconds = Math.max(0, Math.floor(ms / 1000));
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = totalSeconds % 60;
+  return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+}
+
+function updateFieldTestStats() {
+  const successes = fieldTestLog.filter(row => row.api_success === true).length;
+  const failures = fieldTestLog.length - successes;
+
+  samplesLogged.textContent = String(fieldTestLog.length);
+  successfulMatches.textContent = String(successes);
+  failedMatches.textContent = String(failures);
+  exportButton.disabled = fieldTestLog.length === 0;
+  clearLogButton.disabled = fieldTestLog.length === 0;
+
+  if (sessionStartTime !== null) {
+    sessionDuration.textContent = formatDuration(Date.now() - sessionStartTime);
+  }
+}
+
+function logFieldTestSample(sample) {
+  fieldTestLog.push(sample);
+  updateFieldTestStats();
+}
+
+function csvCell(value) {
+  if (value === null || value === undefined) return "";
+  const text = String(value);
+  return `"${text.replaceAll('"', '""')}"`;
+}
+
+function exportFieldTestCsv() {
+  if (!fieldTestLog.length) return;
+
+  const columns = [
+    "timestamp",
+    "latitude",
+    "longitude",
+    "gps_accuracy_m",
+    "gps_speed_mps",
+    "gps_heading_deg",
+    "http_status",
+    "api_success",
+    "segment_id",
+    "road_name",
+    "road_class",
+    "distance_to_segment_m",
+    "in_validation_cohort",
+    "structural_percentile",
+    "error"
+  ];
+
+  const lines = [columns.join(",")];
+
+  for (const row of fieldTestLog) {
+    lines.push(columns.map(column => csvCell(row[column])).join(","));
+  }
+
+  const blob = new Blob([lines.join("\n")], { type: "text/csv;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  const stamp = new Date().toISOString().replaceAll(":", "-").replaceAll(".", "-");
+
+  link.href = url;
+  link.download = `praedicta-drive-field-test-${stamp}.csv`;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  URL.revokeObjectURL(url);
+}
+
+function clearFieldTestLog() {
+  fieldTestLog = [];
+  sessionStartTime = watchId !== null ? Date.now() : null;
+  sessionDuration.textContent = "00:00";
+  updateFieldTestStats();
+}
 
 function distanceMeters(a, b) {
   const R = 6371000;
@@ -425,24 +567,56 @@ function displayContext(data) {
   addHistory(data);
 }
 
-async function queryRoadContext(lat, lon) {
+async function queryRoadContext(sample) {
   if (requestInFlight) return;
 
   requestInFlight = true;
   apiStatus.textContent = "● API QUERYING";
 
+  const baseLog = {
+    timestamp: new Date().toISOString(),
+    latitude: sample.lat,
+    longitude: sample.lon,
+    gps_accuracy_m: sample.accuracy,
+    gps_speed_mps: sample.speed,
+    gps_heading_deg: sample.heading,
+    http_status: null,
+    api_success: false,
+    segment_id: null,
+    road_name: null,
+    road_class: null,
+    distance_to_segment_m: null,
+    in_validation_cohort: null,
+    structural_percentile: null,
+    error: null
+  };
+
   try {
     const url =
-      `${API}?lat=${encodeURIComponent(lat)}&lon=${encodeURIComponent(lon)}`;
+      `${API}?lat=${encodeURIComponent(sample.lat)}&lon=${encodeURIComponent(sample.lon)}`;
 
     const response = await fetch(url);
+    baseLog.http_status = response.status;
 
     if (!response.ok) {
-      throw new Error(`API returned HTTP ${response.status}`);
+      baseLog.error = `API returned HTTP ${response.status}`;
+      logFieldTestSample(baseLog);
+      throw new Error(baseLog.error);
     }
 
     const data = await response.json();
 
+    baseLog.api_success = true;
+    baseLog.segment_id = data.segment_id ?? null;
+    baseLog.road_name = data.street?.name ?? null;
+    baseLog.road_class = data.street?.road_class ?? null;
+    baseLog.distance_to_segment_m = data.query?.distance_to_segment_m ?? null;
+    baseLog.in_validation_cohort =
+      data.validation?.in_validation_cohort ?? null;
+    baseLog.structural_percentile =
+      data.structural_context?.percentile ?? null;
+
+    logFieldTestSample(baseLog);
     displayContext(data);
 
     apiStatus.textContent = "● API ONLINE";
@@ -450,6 +624,11 @@ async function queryRoadContext(lat, lon) {
       "Monitoring road context automatically.";
 
   } catch (error) {
+    if (baseLog.http_status === null) {
+      baseLog.error = error.message;
+      logFieldTestSample(baseLog);
+    }
+
     apiStatus.textContent = "○ API ERROR";
     message.textContent =
       `API request failed: ${error.message}`;
@@ -462,6 +641,8 @@ function handlePosition(position) {
   const lat = position.coords.latitude;
   const lon = position.coords.longitude;
   const accuracy = position.coords.accuracy;
+  const speed = position.coords.speed;
+  const heading = position.coords.heading;
 
   gpsStatus.textContent = "● GPS ACTIVE";
 
@@ -495,7 +676,13 @@ function handlePosition(position) {
   if (shouldQuery) {
     lastQueryPosition = current;
     lastQueryTime = now;
-    queryRoadContext(lat, lon);
+    queryRoadContext({
+      lat,
+      lon,
+      accuracy: Number.isFinite(accuracy) ? accuracy : null,
+      speed: Number.isFinite(speed) ? speed : null,
+      heading: Number.isFinite(heading) ? heading : null
+    });
   }
 }
 
@@ -542,6 +729,16 @@ function startDrive() {
   message.textContent =
     "Requesting location permission…";
 
+  if (sessionStartTime === null) {
+    sessionStartTime = Date.now();
+  }
+
+  if (durationTimer === null) {
+    durationTimer = setInterval(updateFieldTestStats, 1000);
+  }
+
+  updateFieldTestStats();
+
   watchId = navigator.geolocation.watchPosition(
     handlePosition,
     handlePositionError,
@@ -566,7 +763,15 @@ function stopDrive() {
   apiStatus.textContent = "○ API WAITING";
 
   message.textContent =
-    "Monitoring stopped.";
+    "Monitoring stopped. Export the field-test CSV before clearing the log.";
+
+  if (durationTimer !== null) {
+    clearInterval(durationTimer);
+    durationTimer = null;
+  }
+
+  updateFieldTestStats();
+  sessionStartTime = null;
 
   lastQueryPosition = null;
   lastQueryTime = 0;
@@ -574,6 +779,8 @@ function stopDrive() {
 
 startButton.addEventListener("click", startDrive);
 stopButton.addEventListener("click", stopDrive);
+exportButton.addEventListener("click", exportFieldTestCsv);
+clearLogButton.addEventListener("click", clearFieldTestLog);
 </script>
 
 </body>

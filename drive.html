@@ -598,6 +598,26 @@ async function queryRoadContext(sample) {
     const response = await fetch(url);
     baseLog.http_status = response.status;
 
+    if (response.status === 404) {
+      baseLog.error = "outside_coverage_or_no_match";
+      logFieldTestSample(baseLog);
+
+      roadName.textContent = "OUTSIDE COVERAGE";
+      roadClass.textContent = "No Pittsburgh road match within 50 m";
+      percentile.textContent = "—";
+      contextText.textContent =
+        "Praedicta road context is currently unavailable at this location.";
+      matchDistance.textContent = "—";
+      segmentId.textContent = "—";
+      validation.textContent = "—";
+
+      apiStatus.textContent = "● API ONLINE";
+      message.textContent =
+        "Outside current Pittsburgh road coverage or no road match within 50 m.";
+
+      return;
+    }
+
     if (!response.ok) {
       baseLog.error = `API returned HTTP ${response.status}`;
       logFieldTestSample(baseLog);
